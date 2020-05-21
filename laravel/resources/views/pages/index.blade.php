@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>{{config('app.name', "BOOKS-APP")}}</title>
-    <body>
+@section('content')
 
-        <h1>Welcome to Books App</h1>
+<div class="jumbotron text-center">
+    <h1>{{$title}}</h1>
+    <p><a class="btn btn-dark btn-lg btn-outline-success my-2 my-sm-0" href="/login" role="button">Login</a> <a class="btn btn-secondary btn-lg btn-outline-success my-2 my-sm-0" href="/register" role="button">Register</a></p>
+</div>
+
+@endsection
       
-    </body>
-</html>
