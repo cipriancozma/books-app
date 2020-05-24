@@ -18,6 +18,8 @@ Route::get('/contact', "ContactController@index");
 Route::get('/services', "ServicesController@index");
 
 
+Route::resource('movies', 'MoviesController');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
