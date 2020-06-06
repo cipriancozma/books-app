@@ -13,16 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @if(count($movies) > 1) 
-                        @foreach ($movies as $movie)
-                            <div class="well"> 
-                                <h2>{{$movie->title}}</h2>
-                            </div>
-                        @endforeach
-                    @else
-                        <p>No movies found! </p>
-                    @endif
                 </div>
             </div>
         </div>

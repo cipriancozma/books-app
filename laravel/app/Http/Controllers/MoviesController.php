@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+// use DB;
 
 class MoviesController extends Controller
 {
@@ -14,8 +15,11 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
-        return view('views.home')->with('movies', $movies);
+        // return Movie::where('title', '') -> get();
+        // $movies = DB::select('SELECT * FROM movies');
+        // $movies = Movie::all();
+        $movies = Movie::orderBy('title', 'asc')->paginate(6);
+        return view('movies.index')->with('movies', $movies);
     }
 
     /**
