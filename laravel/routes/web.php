@@ -37,12 +37,13 @@ Route::get('/insert_json_into_database', function(){
     $json = file_get_contents('https://raw.githubusercontent.com/cipriancozma/movies-list/master/db.json');
     $moviesObj = json_decode($json, true);
     $insertArr=[];
+    $movies = $moviesObj['movies'];
 
-    foreach($moviesObj as $movie){
+    foreach($movies as $movie){
         foreach($movie as $key => $value) {
             if($key === "genres"){
                 $insertArr[$key] = json_encode($value);
-            } elseif($key === "movies") {
+            } else {
                 $insertArr[$key] = $value;
             }
         }
