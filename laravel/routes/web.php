@@ -33,12 +33,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('insert_json_into_database', function(){
-    $json = file_get_contents(storage_path('https://raw.githubusercontent.com/cipriancozma/movies-list/master/db.json'));
+Route::get('/insert_json_into_database', function(){
+    $json = file_get_contents('https://raw.githubusercontent.com/cipriancozma/movies-list/master/db.json');
     $moviesObj = json_decode($json, true);
+    $insertArr=[];
+
     foreach($moviesObj as $movie){
         foreach($movie as $key => $value) {
-            $insertArr[str_slug($key, '_')] = $value;
+            if($key === "genres"){
+                $insertArr[$key] = json_encode($value);
+            } elseif($key === "movies") {
+                $insertArr[$key] = $value;
+            }
         }
         DB::table('movies')->insert($insertArr);
     }
