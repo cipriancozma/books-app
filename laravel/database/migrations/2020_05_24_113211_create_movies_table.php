@@ -21,9 +21,9 @@ class CreateMoviesTable extends Migration
             $table->longText("genres");
             $table->string("director");
             $table->longText("actors");
-            $table->string("plot");
+            $table->string("plot", 400);
             $table->string("posterUrl");
-            $table->decimal("price");
+            $table->decimal("price", 10, 2)->default(100);
             $table->timestamps();
         });
     }
